@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telehealth Checkout — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <h1>Select a prescription</h1>
+    <div id="patientBanner" class="patient-banner"></div>
+
+    <div class="card">
+      <div id="medicationList" data-testid="medication-list"></div>
+    </div>
+
+    <div class="card">
+      <p class="demo-note">
+        Mock telehealth checkout built for the Q3 screening question
+        ("walk us through how you'd attack a telehealth checkout — edge
+        cases, failure modes, data/state conditions"). No real backend:
+        patient identity is carried as <code>?patient=a</code> /
+        <code>?patient=b</code>, and all 18 cases from
+        Q3_Telehealth_Checkout_TestCases.xlsx (9 Critical Blockers, 6 Edge
+        Cases, 3 Failure Modes) are wired up as real client-side behavior
+        rather than static copy — see each page's own note for which
+        case(s) it exercises. Patient A has a documented Penicillin
+        allergy; Patient B doesn't, so the same Amoxicillin item behaves
+        differently per patient.
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

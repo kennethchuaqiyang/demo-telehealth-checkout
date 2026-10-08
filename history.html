@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order History — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <h1>Order history</h1>
+    <div id="patientBanner" class="patient-banner"></div>
+
+    <div class="card">
+      <div id="allergyRecord"></div>
+    </div>
+
+    <div class="card">
+      <h2>Your orders</h2>
+      <div id="accessCheck"></div>
+      <div id="orderHistory"></div>
+    </div>
+
+    <div class="card">
+      <div id="isolationDemoNote"></div>
+      <p class="demo-note">
+        TC-09: a patient can only see their own order history and allergy
+        record. Orders live in <code>localStorage</code> under
+        <code>orders_a</code> / <code>orders_b</code> — there's no shared
+        server-side store to leak across patients, and this page only
+        ever reads the key for <code>?patient=</code> in the current URL.
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

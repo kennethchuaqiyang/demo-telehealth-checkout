@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Review &amp; Pay — Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <h1>Review &amp; pay</h1>
+    <div id="patientBanner" class="patient-banner"></div>
+
+    <div class="card">
+      <div id="blockMessages"></div>
+      <div id="medSummary"></div>
+      <div id="toleranceBlock"></div>
+    </div>
+
+    <div class="card">
+      <h2>Price</h2>
+      <div id="priceBreakdown"></div>
+    </div>
+
+    <div class="card">
+      <h2>Eligibility check <span style="font-weight:400;color:var(--muted);font-size:0.78rem;">(assumed business rules — confirm thresholds with product before relying on these)</span></h2>
+      <div class="eligibility-row">
+        <label for="ageInput">Age</label>
+        <input type="number" id="ageInput" data-testid="age-input" value="30">
+        <span id="ageThreshold" class="threshold-hint" data-testid="age-threshold-hint"></span>
+        <span id="ageResult" class="result" data-testid="age-eligibility-result"></span>
+      </div>
+      <div class="eligibility-row">
+        <label for="weightInput">Weight (kg)</label>
+        <input type="number" id="weightInput" data-testid="weight-input" value="70">
+        <span id="weightThreshold" class="threshold-hint" data-testid="weight-threshold-hint"></span>
+        <span id="weightResult" class="result" data-testid="weight-eligibility-result"></span>
+      </div>
+      <div class="eligibility-row">
+        <label for="heightInput">Height (cm)</label>
+        <input type="number" id="heightInput" data-testid="height-input" value="170">
+        <span id="heightThreshold" class="threshold-hint" data-testid="height-threshold-hint"></span>
+        <span id="heightResult" class="result" data-testid="height-eligibility-result"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="sessionTimer" class="timer" data-testid="session-timer"></div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="slowGatewayToggle" data-testid="slow-gateway-toggle">
+        <label for="slowGatewayToggle">Simulate slow payment gateway (scaled to ~4s for demo; spec case is &gt;30s)</label>
+      </div>
+      <div id="paymentErrorMessage" class="block-message" data-testid="payment-error-message"></div>
+      <div id="transactionState" class="timer" data-testid="transaction-state"></div>
+      <div id="retryNote"></div>
+      <div class="row">
+        <button type="button" class="primary" id="payButton" data-testid="pay-button">Confirm &amp; pay</button>
+        <button type="button" class="secondary" id="cancelButton" data-testid="cancel-button">Cancel</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="demo-note">
+        This page covers most of the 18 cases on its own: dosage
+        confirmation (TC-01), price calc (TC-02), cancel-before-payment
+        (TC-03), expired/out-of-stock/no-prescription/allergy blocks
+        (TC-04, 08, 17, 18), atomic payment+order creation (TC-05),
+        concurrent-order rejection (TC-06), duplicate-submit guard
+        (TC-07), dosage tolerance (TC-11), age/weight/height eligibility
+        (TC-12–14), session timeout at the T=10/T=11 boundary (TC-15),
+        and the simulated gateway timeout (TC-16).
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
